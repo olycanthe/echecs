@@ -1,15 +1,11 @@
 import pygame
 
-
 class Selecteur:
-
 
     def __init__(self,fenetre_x, fenetre_y):
         self.fenetre_x = fenetre_x #Largeur de la fenêtre
         self.fenetre_y = fenetre_y #Longueur de la fenêtre
-        self.fen = pygame.display.set_mode((fenetre_x, fenetre_y)) # 
         self.position = [fenetre_x/2, fenetre_y/2] # position de depart du curseur au centre
-        self.marron = (167, 103, 38)  # couleur maron
 
     # deplacement du curseur de 1/8 du total de la fenetre ce qui represente une case de damier
     def droite(self): 
@@ -36,7 +32,7 @@ class Selecteur:
         elif clavier[pygame.K_LEFT]:
             self.gauche()   
 
-    def selecteur(self):
+    def selecteur(self, marron , fen):
         
         if self.position[0] <= 0:
             self.position[0] = 0
@@ -48,4 +44,4 @@ class Selecteur:
         elif self.position[1] >= self.fenetre_x:
             self.position[1] = self.fenetre_x - self.fenetre_x/8
         
-        pygame.draw.rect(self.fen, self.marron , (self.position[0], self.position[1], self.fenetre_x/8 ,self.fenetre_x/8), 10)
+        pygame.draw.rect(fen, marron , (self.position[0], self.position[1], self.fenetre_x/8 ,self.fenetre_x/8), 10)
